@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: ryus-market-bot
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m bot.main
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: PORT
+        value: 10000
+      - key: UPI_ID
+        sync: false
+      - key: UPI_PAYEE_NAME
+        sync: false
+      - key: MIN_DEPOSIT_INR
+        value: 50.0
+      - key: CURRENCY_SYMBOL
+        value: ₹
+      - key: SUPPORT_CONTACT
+        sync: false
+      - key: ORDER_EXPIRY_MINUTES
+        value: 15
+      - key: RATE_LIMIT_DELAY
+        value: 0.5
